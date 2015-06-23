@@ -33,5 +33,8 @@ print "-" * 20
 print "Unique Referrers: "
 os.system("cat /var/log/apache2/access.log | awk '{print $11};' | awk -F / '{print $3}' | sort | uniq")
 print "-" * 20
-print "Currently Active Connections: "
+print "Currently Active Connections on port 80: "
 os.system("netstat -plan|grep :80|awk {'print $5'}|cut -d: -f 1|sort|uniq -c|sort -nk 1")
+print "-" * 20
+print "Currently Active Connections on port 443: "
+os.system("netstat -plan|grep :443|awk {'print $5'}|cut -d: -f 1|sort|uniq -c|sort -nk 1")
