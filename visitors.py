@@ -32,3 +32,6 @@ print "-" * 20
 ''' total unique referrers '''
 print "Unique Referrers: "
 os.system("cat /var/log/apache2/access.log | awk '{print $11};' | awk -F / '{print $3}' | sort | uniq")
+print "-" * 20
+print "Currently Active Connections: "
+os.system("netstat -plan|grep :80|awk {'print $5'}|cut -d: -f 1|sort|uniq -c|sort -nk 1")
